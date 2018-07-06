@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4876753151389908}
   - component: {fileID: 33293585919398450}
   - component: {fileID: 23498610999880492}
-  - component: {fileID: 64057148301226588}
   - component: {fileID: 95180877829707500}
-  m_Layer: 0
+  - component: {fileID: 64209772069134586}
+  m_Layer: 9
   m_Name: basicTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4898971915599516}
   - component: {fileID: 114509945916123614}
   - component: {fileID: 54243962441260968}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838518016382848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4876753151389908}
@@ -131,7 +131,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64057148301226588
+--- !u!64 &64209772069134586
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
