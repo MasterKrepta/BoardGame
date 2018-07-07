@@ -22,19 +22,17 @@ public class Tile : MonoBehaviour {
         material = meshRenderer.material;
         originalMaterial = material;
     }
-    //private void OnMouseOver() {
-    //    meshRenderer.material = materials[1];
-    //}
 
-    //private void OnMouseExit() {
-    //    if(!selected)
-    //        meshRenderer.material = materials[0];
-    //}
 
     public void SelectTile() {
         selected = !selected;
-        if(selected)
-            meshRenderer.material = materials[1];
+        //if(selected) {
+        //    meshRenderer.material = materials[1];
+        //}
+        //else {
+        //    meshRenderer.material = materials[2];
+        //}
+            
     }
 
     public void ClearSelected() {
@@ -42,7 +40,7 @@ public class Tile : MonoBehaviour {
         foreach (Tile tile in Utilities.Tiles) {
             tile.selected = false;
             tile.selectable = false;
-            meshRenderer.material = materials[0];
+            tile.meshRenderer.material = materials[0];
         }
     }
 

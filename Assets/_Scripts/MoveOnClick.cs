@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MoveOnClick : MonoBehaviour {
 
+    SelectedTileIndicator indicator;
     int tilesize = 2; // The width of each tile
 
     public Tile startingTile;
-    [SerializeField] Tile selectedTile;
+    public Tile selectedTile;
     Tile oldSelected;
     [SerializeField] Tile currentTile;
     [SerializeField] LayerMask tileLayer;
@@ -15,6 +16,7 @@ public class MoveOnClick : MonoBehaviour {
     DisplayStats displayStats;
 
     private void Awake() {
+        indicator = FindObjectOfType<SelectedTileIndicator>();
         Utilities.Tiles = FindObjectsOfType<Tile>();
         currentTile = startingTile;
         selectedTile = currentTile;
@@ -45,6 +47,8 @@ public class MoveOnClick : MonoBehaviour {
             if(tileHit != null && tileHit.selectable) {
                 //tileHit.GetComponentInChildren<MeshRenderer>().material = tileHit.GetComponentInChildren<Tile>().materials[1];
                 if (Input.GetMouseButtonUp(0) && tileHit.selectable) {
+                    // Move our indicator
+                    indicator.MoveIndicator(tileHit);
                     if (oldSelected != null)
                         oldSelected.SelectTile();
                     selectedTile = tileHit;
@@ -60,6 +64,7 @@ public class MoveOnClick : MonoBehaviour {
     }
 
     void Move(Tile tileToMoveTo) {
+        indicator.HideIndicator();
         this.transform.position = tileToMoveTo.transform.position;
         currentTile = tileToMoveTo;
         tileToMoveTo.ClearSelected();
