@@ -26,17 +26,11 @@ public class Tile : MonoBehaviour {
 
     public void SelectTile() {
         selected = !selected;
-        //if(selected) {
-        //    meshRenderer.material = materials[1];
-        //}
-        //else {
-        //    meshRenderer.material = materials[2];
-        //}
-            
+
     }
 
     public void ClearSelected() {
-        
+
         foreach (Tile tile in Utilities.Tiles) {
             tile.selected = false;
             tile.selectable = false;

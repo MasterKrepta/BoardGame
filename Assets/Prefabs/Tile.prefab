@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1838518016382848}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1207922209518194
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4876753151389908}
   - component: {fileID: 33293585919398450}
@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 64209772069134586}
   m_Layer: 9
   m_Name: basicTile
-  m_TagString: Untagged
+  m_TagString: tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,16 +33,16 @@ GameObject:
 --- !u!1 &1838518016382848
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4898971915599516}
-  - component: {fileID: 114509945916123614}
   - component: {fileID: 54243962441260968}
+  - component: {fileID: 114060853272832108}
   m_Layer: 9
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ GameObject:
 --- !u!4 &4876753151389908
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207922209518194}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
@@ -63,7 +63,7 @@ Transform:
 --- !u!4 &4898971915599516
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838518016382848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -77,7 +77,7 @@ Transform:
 --- !u!23 &23498610999880492
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207922209518194}
   m_Enabled: 1
@@ -112,14 +112,14 @@ MeshRenderer:
 --- !u!33 &33293585919398450
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207922209518194}
   m_Mesh: {fileID: 4300000, guid: 984d0f94ba33fb04083c7c887bf71555, type: 3}
 --- !u!54 &54243962441260968
 Rigidbody:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838518016382848}
   serializedVersion: 2
@@ -134,7 +134,7 @@ Rigidbody:
 --- !u!64 &64209772069134586
 MeshCollider:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207922209518194}
   m_Material: {fileID: 0}
@@ -149,7 +149,7 @@ MeshCollider:
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207922209518194}
   m_Enabled: 1
@@ -163,20 +163,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114509945916123614
+--- !u!114 &114060853272832108
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838518016382848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f25ea140f31a149973d3e3cb1a6265, type: 3}
+  m_Script: {fileID: 11500000, guid: 4848d260e1ff9ee41adf5dda224130ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 0ea570f8b2286124a970ab19c8d55f59, type: 2}
-  - {fileID: 2100000, guid: 20ed44db650d9f841acd2976b90fef27, type: 2}
-  - {fileID: 2100000, guid: f6e6c92fe59b8d849b6d02effb758b3e, type: 2}
-  selected: 0
-  moveCost: 1
+  walkable: 1
+  current: 0
+  target: 0
+  selectable: 0
+  neighbors: []
+  visisted: 0
+  parent: {fileID: 0}
+  distance: 0
