@@ -13,6 +13,7 @@ public class TacticsMove : MonoBehaviour {
 
     public float jumpHeight = 2;
     public float move = 5;
+    public bool moving = false;
 
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
@@ -83,9 +84,20 @@ public class TacticsMove : MonoBehaviour {
         
         }
 
-
+       
     }
 
+    public void MoveToTile(tutTile tile) {
+        path.Clear();
+        tile.target = true;
+        moving = true;
+
+        tutTile next = tile;
+        while (next != null) {
+            path.Push(next);
+            next = next.parent;
+        }
+    }
     //private void OnDrawGizmos() {
     //    //Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1)
     //    Debug.DrawRay(gameObject.transform.position, -Vector3.up, Color.red,1);

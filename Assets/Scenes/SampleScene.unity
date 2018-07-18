@@ -414,6 +414,7 @@ MonoBehaviour:
   tiles: []
   jumpHeight: 2
   move: 5
+  moving: 0
 --- !u!1001 &147735880
 Prefab:
   m_ObjectHideFlags: 0

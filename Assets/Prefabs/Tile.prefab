@@ -179,6 +179,6 @@ MonoBehaviour:
   target: 0
   selectable: 0
   neighbors: []
-  visisted: 0
+  visited: 0
   parent: {fileID: 0}
   distance: 0
