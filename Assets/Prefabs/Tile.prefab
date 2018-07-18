@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 23498610999880492}
   - component: {fileID: 95180877829707500}
   - component: {fileID: 64209772069134586}
+  - component: {fileID: 54437923687636232}
   m_Layer: 9
   m_Name: basicTile
-  m_TagString: tile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4898971915599516}
-  - component: {fileID: 54243962441260968}
   - component: {fileID: 114060853272832108}
   m_Layer: 9
   m_Name: Tile
@@ -116,12 +116,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207922209518194}
   m_Mesh: {fileID: 4300000, guid: 984d0f94ba33fb04083c7c887bf71555, type: 3}
---- !u!54 &54243962441260968
+--- !u!54 &54437923687636232
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838518016382848}
+  m_GameObject: {fileID: 1207922209518194}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0

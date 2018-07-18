@@ -10,9 +10,11 @@ public class tutTile : MonoBehaviour {
     public bool selectable = false;
 
     public List<tutTile> neighbors = new List<tutTile>();
-    public bool visisted = false;
+    public bool visited = false;
     public tutTile parent = null;
     public int distance = 0;
+
+    Vector3 raycastOffset = new Vector3(0, 0.25f, 0);
     // Use this for initialization
     void Start () {
 		
@@ -38,7 +40,7 @@ public class tutTile : MonoBehaviour {
         current = false;
         target = false;
         selectable = false;
-        visisted = false;
+        visited = false;
         parent = null;
         distance = 0;
     }
@@ -47,10 +49,10 @@ public class tutTile : MonoBehaviour {
         //TODO we may use the jumpheight to set tiles that are simply so high they are unwalkable to use as walls(seems silly but perhaps??)
         Reset();
         //TODO figure out diaganals
-        CheckTile(Vector3.forward, jumpheight);
-        CheckTile(-Vector3.forward, jumpheight);
-        CheckTile(Vector3.right, jumpheight);
-        CheckTile(-Vector3.right, jumpheight);
+        CheckTile(Vector3.forward * 2, jumpheight);
+        CheckTile(-Vector3.forward * 2, jumpheight);
+        CheckTile(Vector3.right * 2, jumpheight);
+        CheckTile(-Vector3.right * 2, jumpheight);
     }
 
     public void CheckTile(Vector3 dir, float jumpHeight) {
@@ -58,16 +60,30 @@ public class tutTile : MonoBehaviour {
         Collider[] colliders = Physics.OverlapBox(transform.position + dir, half);
 
         foreach (Collider item in colliders) {
-            tutTile tile = item.GetComponent<tutTile>();
+            tutTile tile = item.GetComponentInParent<tutTile>();
+            //Debug.Log(tile.name + " is the tile");
             if(tile  != null && tile.walkable) {
                 RaycastHit hit;
-                if(!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1)) { // if nothing is on Tile
+                if (Physics.Raycast(tile.transform.position + raycastOffset, Vector3.up, out hit, 1)) { // if nothing is on Tile
+                    Debug.Log(hit.collider.name + " was hit");
+                }
+
+                    if (!Physics.Raycast(tile.transform.position + raycastOffset, Vector3.up, out hit, 1)) { // if nothing is on Tile
                     neighbors.Add(tile);
+                }
+                else {
+                    //Debug.Log(hit.collider.name);
+                    
                 }
                 
             }
         }
     }
+    //private void OnDrawGizmos() {
+    //    //Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1)
+        
+    //    Debug.DrawRay(gameObject.transform.position + raycastOffset, Vector3.up, Color.red, 1);
+    //}
 }
 
 

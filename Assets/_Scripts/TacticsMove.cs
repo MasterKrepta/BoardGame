@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class TacticsMove : MonoBehaviour {
 
-    List<tutTile> selectableTiles = new List<tutTile>();
-    GameObject[] tiles;
+    [SerializeField] List<tutTile> selectableTiles = new List<tutTile>();
+    [SerializeField] GameObject[] tiles;
 
+    Vector3 raycastOffset = new Vector3(0f, 0.3f, 0f);
     Stack<tutTile> path = new Stack<tutTile>();
-    tutTile currentTile;
+    tutTile currentTile = null;
 
     public float jumpHeight = 2;
     public float move = 5;
@@ -25,6 +26,7 @@ public class TacticsMove : MonoBehaviour {
     }
 
     public void GetCurrentTile() {
+        Debug.Log("start of get current");
         currentTile = GetTargetTile(gameObject);
         currentTile.current = true;
     }
@@ -32,16 +34,23 @@ public class TacticsMove : MonoBehaviour {
     public tutTile GetTargetTile(GameObject target) {
         RaycastHit hit;
         tutTile tile = null;
-        if(Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1)){
-            tile = hit.collider.GetComponentInChildren<tutTile>();
+        
+        if (Physics.Raycast(target.transform.position + raycastOffset, -Vector3.up, out hit, 1)){
+            //Debug.Log(hit.collider.name);
+            tile = hit.collider.GetComponentInParent<tutTile>();
         }
-
+        else {
+            Debug.Log("NO TILE FOUND");
+        }
+        
         return tile;
     }
 
     public void GetNeighbors() {
+        //Debug.Log(tiles.Length);
         foreach (GameObject tile in tiles) {
-            tutTile t = tile.GetComponentInChildren<tutTile>();
+            tutTile t = tile.GetComponent<tutTile>();
+            
             t.FindNeighbors(jumpHeight); // STOPPED PART 3 At 20:50
         }
     }
@@ -50,19 +59,23 @@ public class TacticsMove : MonoBehaviour {
         GetCurrentTile();
 
         Queue<tutTile> process = new Queue<tutTile>();
-        currentTile.visisted = true;
+
+        process.Enqueue(currentTile);
+        currentTile.visited = true;
 
         while (process.Count > 0) {
+
             tutTile t = process.Dequeue();
+
             selectableTiles.Add(t);
             t.selectable = true;
 
             if (t.distance < move) {
                 foreach (tutTile tile in t.neighbors) {
-                    if (!tile.visisted) {
+                    if (!tile.visited) {
                         tile.parent = t;
-                        tile.visisted = true;
-                        tile.distance = 1 + t.distance;
+                        tile.visited = true;
+                        tile.distance = 2 + t.distance;
                         process.Enqueue(tile);
                     }
                 }
@@ -72,4 +85,9 @@ public class TacticsMove : MonoBehaviour {
 
 
     }
+
+    //private void OnDrawGizmos() {
+    //    //Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1)
+    //    Debug.DrawRay(gameObject.transform.position, -Vector3.up, Color.red,1);
+    //}
 }
