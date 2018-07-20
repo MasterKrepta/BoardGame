@@ -15,6 +15,12 @@ public class tutTile : MonoBehaviour {
     public int distance = 0;
 
     Vector3 raycastOffset = new Vector3(0, 0.25f, 0);
+
+
+    // for A* costing
+    public float f = 0;
+    public float g = 0;
+    public float h = 0; 
     // Use this for initialization
     void Start () {
 		
@@ -43,19 +49,21 @@ public class tutTile : MonoBehaviour {
         visited = false;
         parent = null;
         distance = 0;
+
+        f = g = h = 0;
     }
 
-    public void FindNeighbors(float jumpheight) {
+    public void FindNeighbors(float jumpheight, tutTile target) {
         //TODO we may use the jumpheight to set tiles that are simply so high they are unwalkable to use as walls(seems silly but perhaps??)
         Reset();
         //TODO figure out diaganals
-        CheckTile(Vector3.forward * 2, jumpheight);
-        CheckTile(-Vector3.forward * 2, jumpheight);
-        CheckTile(Vector3.right * 2, jumpheight);
-        CheckTile(-Vector3.right * 2, jumpheight);
+        CheckTile(Vector3.forward * 2, jumpheight, target);
+        CheckTile(-Vector3.forward * 2, jumpheight, target);
+        CheckTile(Vector3.right * 2, jumpheight, target);
+        CheckTile(-Vector3.right * 2, jumpheight, target);
     }
 
-    public void CheckTile(Vector3 dir, float jumpHeight) {
+    public void CheckTile(Vector3 dir, float jumpHeight, tutTile target ) {
         Vector3 half = new Vector3(.25f, (1 + jumpHeight) / 2, 0.25f);
         Collider[] colliders = Physics.OverlapBox(transform.position + dir, half);
 
@@ -64,11 +72,8 @@ public class tutTile : MonoBehaviour {
             //Debug.Log(tile.name + " is the tile");
             if(tile  != null && tile.walkable) {
                 RaycastHit hit;
-                if (Physics.Raycast(tile.transform.position + raycastOffset, Vector3.up, out hit, 1)) { // if nothing is on Tile
-                    Debug.Log(hit.collider.name + " was hit");
-                }
 
-                    if (!Physics.Raycast(tile.transform.position + raycastOffset, Vector3.up, out hit, 1)) { // if nothing is on Tile
+                if (!Physics.Raycast(tile.transform.position + raycastOffset, Vector3.up, out hit, 1) || (tile == target)) { // if nothing is on Tile
                     neighbors.Add(tile);
                 }
                 else {
