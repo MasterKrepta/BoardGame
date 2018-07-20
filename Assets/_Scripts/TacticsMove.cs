@@ -53,9 +53,6 @@ public class TacticsMove : MonoBehaviour {
             //Debug.Log(hit.collider.name);
             tile = hit.collider.GetComponentInParent<tutTile>();
         }
-        else {
-            Debug.Log("NO TILE FOUND");
-        }
         
         return tile;
     }
@@ -176,6 +173,7 @@ public class TacticsMove : MonoBehaviour {
     }
 
     protected void FindPath(tutTile target) {
+        
         GetNeighbors(jumpHeight, target);
         GetCurrentTile();
 
@@ -211,7 +209,7 @@ public class TacticsMove : MonoBehaviour {
                     }
                 }
                 else {
-                    tile.parent = tile;
+                    tile.parent = t;
 
                     tile.g = tile.g + Vector3.Distance(tile.transform.position, tile.transform.position);
                     tile.h = Vector3.Distance(tile.transform.position, target.transform.position);
@@ -228,6 +226,7 @@ public class TacticsMove : MonoBehaviour {
     }
 
     private tutTile FindLowestF(List<tutTile> openList) {
+        
         tutTile lowest = openList[0];
         foreach (tutTile t in openList) {
             if (t.f < lowest.f) {
@@ -239,25 +238,32 @@ public class TacticsMove : MonoBehaviour {
         return lowest;
     }
 
-    public tutTile FindEndTile(tutTile t) {
+
+    protected tutTile FindEndTile(tutTile t) {
+        
         Stack<tutTile> tempPath = new Stack<tutTile>();
 
         tutTile next = t.parent;
+        
         while (next != null) {
+        
             tempPath.Push(next);
             next = next.parent;
         }
+
         if (tempPath.Count <= moveRange) {
             return t.parent;
         }
 
-         tutTile endTile = null;
-         for (int i = 0; i < moveRange; i++) {
-                endTile = tempPath.Pop();
-         }
+        tutTile endTile = null;
+        for (int i = 0; i <= moveRange; i++) {
+            endTile = tempPath.Pop();
+        }
 
         return endTile;
     }
+
+
     //private void OnDrawGizmos() {
     //    //Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1)
     //    Debug.DrawRay(gameObject.transform.position, -Vector3.up, Color.red,1);

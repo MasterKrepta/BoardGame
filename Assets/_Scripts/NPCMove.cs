@@ -20,8 +20,11 @@ public class NPCMove : TacticsMove {
 
         if (!moving) {
             FindNearestTarget();
+            Debug.Log("got our player");
             CalculatePath();
+            Debug.Log("got our path");
             FindSelectableTiles();
+            Debug.Log("got our selectables");
             actualTargetTile.target = true;
         }
         else {
@@ -30,30 +33,27 @@ public class NPCMove : TacticsMove {
 
     }
     private void FindNearestTarget() {
-        //GameObject[] targets = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player");
 
-        //GameObject nearest = null;
+        GameObject nearest = null;
 
-        //float distance = Mathf.Infinity;
+        float distance = Mathf.Infinity;
 
-        //foreach (GameObject obj in targets) {
-        //    float d = Vector3.Distance(transform.position, obj.transform.position);
+        foreach (GameObject obj in targets) {
+            float d = Vector3.Distance(transform.position, obj.transform.position);
 
-        //    if(d < distance) {
-        //        distance = d;
-        //        nearest = obj;
-        //    }
+            if (d < distance) {
+                distance = d;
+                nearest = obj;
+            }
+        }
 
-        //}
-
-        //target = nearest;
-        target = GameObject.FindGameObjectWithTag("Player");
+        target = nearest;
+        //target = GameObject.FindGameObjectWithTag("Player");
     }
     private void CalculatePath() {
         tutTile targetTile = GetTargetTile(target);
         FindPath(targetTile);
-
-        
     }
 
     
