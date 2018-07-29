@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class SelectedTileIndicator : MonoBehaviour {
 
-    MoveOnClick player;
+    
     Transform _transform;
+
 	// Use this for initialization
 	void Start () {
         _transform = this.gameObject.transform;
-        player = FindObjectOfType<MoveOnClick>();
+    
         this.gameObject.SetActive(false);
 	}
 
-    public void MoveIndicator(Tile tileToMoveTo) {
+    public void MoveIndicator(GameObject target) {
         this.gameObject.SetActive(true);
-        _transform.position = tileToMoveTo.transform.position;
+
+        //_transform.position = target.transform.position;
+        transform.position = target.transform.position;
+        Debug.Log(transform.position);
+        Debug.Log(target.transform.position + " after");
     }
 
     public void HideIndicator() {

@@ -20,11 +20,11 @@ public class NPCMove : TacticsMove {
 
         if (!moving) {
             FindNearestTarget();
-            Debug.Log("got our player");
+            //Debug.Log("got our player");
             CalculatePath();
-            Debug.Log("got our path");
+            //Debug.Log("got our path");
             FindSelectableTiles();
-            Debug.Log("got our selectables");
+            //Debug.Log("got our selectables");
             actualTargetTile.target = true;
         }
         else {

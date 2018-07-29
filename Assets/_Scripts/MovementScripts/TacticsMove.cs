@@ -24,6 +24,7 @@ public class TacticsMove : MonoBehaviour {
     Vector3 heading = new Vector3();
 
     float halfHeight = 0;
+    UnitAttack unitAttack;
 
     //FOR A*
     public tutTile actualTargetTile;
@@ -36,6 +37,7 @@ public class TacticsMove : MonoBehaviour {
         if(displayStats == null) {
             Debug.LogWarning("NO STATS ASSIGNED TO " + this.gameObject.name);
         }
+        unitAttack = GetComponent<UnitAttack>();
         TurnManager.AddUnit(this);
     }
 
@@ -135,8 +137,8 @@ public class TacticsMove : MonoBehaviour {
         else {
             RemoveSelectableTiles();
             moving = false;
-
-            TurnManager.EndTurn();
+            unitAttack.BeginActionPhase();
+            
         }
     }
 
@@ -219,8 +221,6 @@ public class TacticsMove : MonoBehaviour {
                 }
             }
         }
-
-
         //TODO what happens if there is no path
         Debug.Log("Path not found");
     }

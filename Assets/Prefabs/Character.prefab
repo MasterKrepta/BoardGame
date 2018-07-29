@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4479270311039906}
   - component: {fileID: 54674077402192130}
-  - component: {fileID: 114938907093270414}
   - component: {fileID: 114318139167038616}
   - component: {fileID: 114962739904034628}
+  - component: {fileID: 114096660343808412}
+  - component: {fileID: 114754873601931234}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -132,6 +133,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114096660343808412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047696518281384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8d40e2272197f44a7d5916da9dac62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: 7c06369a7b3c6bf4b8d8e7c2198acb37, type: 2}
 --- !u!114 &114318139167038616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,23 +165,19 @@ MonoBehaviour:
   moveRange: 5
   moving: 0
   actualTargetTile: {fileID: 0}
---- !u!114 &114938907093270414
+--- !u!114 &114754873601931234
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047696518281384}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad26ec7eb980744ca67052a23e9d2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a31a31ae91393c499eff5c7b1983ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTile: {fileID: 0}
-  selectedTile: {fileID: 0}
-  currentTile: {fileID: 0}
-  tileLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  indicator: {fileID: 114351330173042688, guid: 46b39ee9daba5b4418b4f9914448f07d,
+    type: 2}
 --- !u!114 &114962739904034628
 MonoBehaviour:
   m_ObjectHideFlags: 1

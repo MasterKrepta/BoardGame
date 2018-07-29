@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4479270311039906}
   - component: {fileID: 54674077402192130}
-  - component: {fileID: 114938907093270414}
   - component: {fileID: 114136299619574914}
   - component: {fileID: 114808930594691264}
+  - component: {fileID: 114945378027427210}
+  - component: {fileID: 114775855300511376}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -144,6 +145,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 784170979bfb21d44b093002b437ff7c, type: 2}
+--- !u!114 &114775855300511376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047696518281384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a31a31ae91393c499eff5c7b1983ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicator: {fileID: 114351330173042688, guid: 46b39ee9daba5b4418b4f9914448f07d,
+    type: 2}
 --- !u!114 &114808930594691264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,23 +178,18 @@ MonoBehaviour:
   moveRange: 0
   moving: 0
   actualTargetTile: {fileID: 0}
---- !u!114 &114938907093270414
+--- !u!114 &114945378027427210
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047696518281384}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad26ec7eb980744ca67052a23e9d2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e8d40e2272197f44a7d5916da9dac62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTile: {fileID: 0}
-  selectedTile: {fileID: 0}
-  currentTile: {fileID: 0}
-  tileLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  weapon: {fileID: 11400000, guid: 0af948b9a3402944f8f88577bb19672e, type: 2}
 --- !u!136 &136174095228163914
 CapsuleCollider:
   m_ObjectHideFlags: 1
